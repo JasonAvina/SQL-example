@@ -1,0 +1,23 @@
+/*the following code creates two tables: patients and insurance info, the patients table contains a foreign key to the insurance table, so that each patient can be linked to their insurance info*/
+
+CREATE TABLE Patients
+(
+    patient_id        INT            NOT NULL,
+    name              TINYTEXT       NOT NULL,
+    age               TINYINT        NOT NULL,
+    sex               CHAR           NOT NULL,
+    claim_id          INT            NOT NULL,
+    PRIMARY KEY(patient_id),
+    FOREIGN KEY(claim_id) REFERENCES Insurance(claim_id)
+);
+
+CREATE TABLE Insurance
+(
+    claim_id          INT            NOT NULL,
+    company           TINYTEXT       NOT NULL,
+    NPI               INT            NOT NULL,
+    procedure         TEXT           NOT NULL,
+    charge            INT            NOT NULL,
+    copay             INT            NOT NULL,
+    PRIMARY KEY(claim_id)
+);
